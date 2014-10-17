@@ -1,0 +1,76 @@
+﻿<!doctype html> 
+<html> 
+<head> 
+<script src="../angular.min.js"></script> 
+<style>
+.selected {
+	background-color: #090;
+}
+</style>
+</head> 
+<body ng-app="myapp">
+<div ng-controller="gridController"> 
+<table>
+	<tr><th>Name</th><th>Sex</th><th>Age</th><th>Birth</th><th>Action</th></tr>
+	<tr ng-repeat="user in users | orderBy: 'birth'" ng-click="highlight($index)" ng-class="{selected: $index==selectedRow}">
+		<td>{{ user.name }}</td>
+		<td>{{ expr(user.sex) }}</td>
+		<td ng-bind="user.birth | birthYear"></td>
+		<td><input type="text" ng-model="user.birth"></td>
+		<td><button ng-click="deleteUser($index)">Delete</button></td>
+	</tr>
+</table>
+<br/>
+<div ng-show="addOnce">
+	<p>Name: <input type="text" ng-model="userName" ></p>
+	<p>Sex: <input type="text" ng-model="userSex" ></p>
+	<p>Birth: <input type="text" ng-model="userBirth" ></p>
+	<p><button ng-click="addNewUser()">Add New</button></p>
+</div>
+</div>
+
+<script>
+var myModule = angular.module('myapp', []);
+
+myModule.filter('birthYear', function () {	
+	var now = new Date().getFullYear();
+	var birthFilter = function (input) {
+		if (input < 1900 || input > now) {		
+			return 'error';
+		} else {
+			return now - input;
+		}
+	}
+	return birthFilter;
+});
+
+myModule.controller('gridController', function ($scope, $http, $parse) {
+	$scope.addOnce = true;
+	$scope.selectedRow = -1;
+	$scope.expr = function (sex) {
+		return sex == 'Male' ? '男' : '女';
+	}	
+	
+	$scope.users = [
+		{ 'name': 'Roger', 'sex': 'Male', 'birth': 1982 },		
+		{ 'name': 'Talin', 'sex': 'Female', 'birth': 1986 },
+		{ 'name': '小吴', 'sex': 'Male', 'birth': 1986 },
+		{ 'name': 'Jerry', 'sex': 'Male', 'birth': 1984 }
+	];
+	
+	$scope.addNewUser = function () {
+		$scope.users.push({ 'name': $scope.userName, 'sex': $scope.userSex, 'birth': $scope.userBirth });
+		//$scope.addOnce = false;
+	}
+	
+	$scope.deleteUser = function (idx) {
+		$scope.users.splice(idx, 1);
+	}
+	
+	$scope.highlight = function (row) {		
+		$scope.selectedRow = row;
+	}
+});
+</script>
+</body>
+</html>
