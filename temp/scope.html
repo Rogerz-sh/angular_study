@@ -1,0 +1,50 @@
+<!doctype html> 
+<html> 
+<head>
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<script src="../lib/angular.min.js"></script> 
+	<script src="main.js"></script> 
+	<style>
+	.selected {
+		background-color: #090;
+	}
+	</style>
+</head> 
+<body ng-app="myapp">
+	<div class="panel panel-primary" ng-controller="scopeController">
+		<div class="panel-heading">
+			<div class="panel-title" ng-bind="info.title"></div>
+		</div>
+		<div class="panel-body">
+			<form class="form-horizontal">
+				<div class="form-group">
+					<label class="control-label col-md-2">UserName:</label>
+					<div class="col-md-10"><input type="text" class="form-control" ng-model="user.name"></div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-2">Password:</label>
+					<div class="col-md-10"><input type="password" class="form-control" ng-model="user.password"></div>
+				</div>
+				<div class="form-group">
+					<div  class="col-md-offset-2 col-md-10">
+						<div class="checkbox">
+							<label><input type="checkbox" name="" id="" ng-model="user.remember" ng-checked="user.remember">Remember Me</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-offset-2 col-md-10"><button type="submit" class="btn btn-primary">Submit</button></div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<ul class="list-group">
+		<li class="list-group-item">1</li>
+		<li class="list-group-item">2</li>
+		<li class="list-group-item">3</li>
+		<li class="list-group-item">4</li>
+		<li class="list-group-item">5</li>
+	</ul>
+</body>
+</html>

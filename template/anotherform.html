@@ -1,0 +1,23 @@
+<form class="form-horizontal" my-user="userInfo">
+	<div class="form-group">
+		<label class="control-label col-md-2">UserName:</label>
+		<div class="col-md-10"><input type="text" class="form-control" ng-model="userInfo.name"></div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-md-2">Password:</label>
+		<div class="col-md-10"><input type="password" class="form-control" ng-model="userInfo.password"></div>
+	</div>
+	<div class="form-group">
+		<div  class="col-md-offset-2 col-md-10">
+			<div class="checkbox">
+				<label><input type="checkbox" ng-checked="userInfo.remember" ng-model="userInfo.remember">Remember Me</label>
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-md-offset-2 col-md-10">
+			<button type="submit" class="btn btn-primary" ng-click="save()">Submit</button>
+			<button type="reset" class="btn btn-warning" ng-click="reset()">Reset</button>
+		</div>
+	</div>
+</form>

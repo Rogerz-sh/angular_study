@@ -1,15 +1,55 @@
 ﻿<!doctype html> 
 <html ng-app="myapp"> 
-<head> 
-<script src="../lib/angular.min.js"></script> 
-<script src="../lib/angular-route.min.js"></script>
-<script src="app.js"></script>
-<script src="controller.js"></script>
-<link href="../style.css" rel="stylesheet" type="text/css" />
-<title>Route Test</title>
+<head>
+	<link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+	<script src="../bootstrap/jquery.js"></script>
+	<script src="../bootstrap/bootstrap.min.js"></script> 
+	<script src="../lib/angular.min.js"></script> 
+	<script src="../lib/angular-route.min.js"></script>
+	<script src="app.js"></script>
+	<script src="service.js"></script>
+	<script src="controller.js"></script>
+	<script src="directive.js"></script>
+	<link href="../style.css" rel="stylesheet" type="text/css" />
+	<title>Route Test</title>
 </head> 
 <body>
-<h1>Host</h1>
-<div ng-view></div>
+	<div class="container" ng-controller="baseController">
+		<ul class="nav nav-tabs">
+			<li class="dropdown"><a href="##" class="dropdown-toggle" data-toggle="dropdown">Home <span class="caret"></span></a>
+				<ul class="dropdown-menu pull-left">
+					<li><a href="##">file</a></li>
+					<li><a href="##">save</a></li>
+					<li><a href="##">open</a></li>
+				</ul>
+			</li>
+			<li class="dropdown active"><a href="##" class="dropdown-toggle" data-toggle="dropdown">CSS3 <span class="caret"></span></a>
+				<ul class="dropdown-menu pull-left">
+					<li><a href="##">margin</a></li>
+					<li><a href="##">padding</a></li>
+					<li><a href="##">border</a></li>
+				</ul>
+			</li>
+			<li><a href="##">Sass</a></li>
+			<li><a href="##">jQuery</a></li>
+			<li><a href="##">Responsive</a></li>
+		</ul>
+		<div class="panel panel-default" style="margin-top:-1px;">
+			<div class="panel-body">
+				<div class="btn-group">
+					<button class="btn btn-default">First</button>
+					<button class="btn btn-default">Prev</button>
+					<button class="btn btn-default">Next</button>
+					<button class="btn btn-default">Last</button>
+				</div>
+				<br><br>
+				<div class="progress progress-striped active">
+					<div class="progress-bar progress-bar-info" style="width:{{progress.num}}%;">下载进度{{progress.num}}%</div>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div ng-view></div>
+	</div>
 </body>
 </html>

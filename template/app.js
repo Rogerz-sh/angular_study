@@ -4,11 +4,11 @@ routeApp.config(['$routeProvider', function ($routeProvider) {
 	$routeProvider
 		.when('/', {
 			'templateUrl': 'index.html',
-			'controller': mainController
+			'controller': 'mainController'
 		})
 		.when('/error/:text', {
 			'templateUrl': 'error.html',
-			'controller': errController
+			'controller': 'errController'
 		})
 		.otherwise({
 			'redirectTo': '/error'
